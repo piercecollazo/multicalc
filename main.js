@@ -58,24 +58,24 @@ function appendToList(event) {
 
 
 }
-
+// Remove from the list.
 function removeFromList(event) {
     // Make sure page doesn't reload on button press.
     event.preventDefault();
 
     // Get the index we'll remove from the input field.
-    // Check out what parseInt does, you'll DEFINITELY have to use it elsewhere!
     const index = document.querySelector('#list-number').value;
 
     // Remove the number at that index from the list.
 
     /*
-    ### Hints:
-    * You can either loop through... or use array methods--check out concat!
+        ### Hints:
 
-    * Either way, though, we've declared out array using `let` this time,
-    and reassigning the array is probably the best approach with our current
-    tools.
+        * You can either loop through... or use array methods. Check out concat!
+
+        * Either way, though, we've declared out array using `let` this time,
+        and reassigning the array is probably the best approach with our current
+        tools.
     */
 
     // Update our html.
@@ -91,8 +91,7 @@ function clearList(event) {
 
 
     // Update our html.
-
-
+    
 }
 
 /*
