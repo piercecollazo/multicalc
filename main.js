@@ -1,3 +1,9 @@
+/*
+# ========================================================
+# = Initialization
+# ========================================================
+*/
+
 // global array
 let numbers = [];
 
@@ -8,31 +14,31 @@ window.onload = init;
 function init() {
 
     // When the user clicks the append button, append the given number to the list.
-    document.querySelector('#append')
+    document.querySelector('')
         .addEventListener('click', appendToList);
 
     // When the user clicks the remove button, remove the number at the index given from the list.
-    document.querySelector('#remove')
+    document.querySelector('')
         .addEventListener('click', removeFromList);
 
     // When the user clicks the clear button, remove all items from the list.
-    document.querySelector('#clear')
+    document.querySelector('')
         .addEventListener('click', clearList);
 
     // When the user clicks the add button, add the value to each item.
-    document.querySelector('#add')
+    document.querySelector('')
         .addEventListener('click', addToAll);
 
     // When the user clicks the add button, add the value to each item.
-    document.querySelector('#subtract')
+    document.querySelector('')
         .addEventListener('click', subtractFromAll);
         
     // When the user clicks the multiply button, multiply the value by each item.
-    document.querySelector('#multiply')
+    document.querySelector('')
         .addEventListener('click', multiplyByAll);
         
     // When the user clicks the divide button, divide the value from each item.
-    document.querySelector('#divide')
+    document.querySelector('')
         .addEventListener('click', divideFromAll);
 }
 
@@ -64,7 +70,7 @@ function removeFromList(event) {
     event.preventDefault();
 
     // Get the index we'll remove from the input field.
-    const index = document.querySelector('#list-number').value;
+    let index = document.querySelector('').value;
 
     // Remove the number at that index from the list.
 
@@ -106,7 +112,7 @@ function addToAll(event) {
     event.preventDefault();
 
     // Grab value to add.
-    const numberToAdd = document.querySelector('#numberForMath').value;
+    let numberToAdd = document.querySelector('').value;
 
     // Add value to everything on the list.
 
@@ -120,7 +126,7 @@ function subtractFromAll(event) {
     event.preventDefault();
     
     // Grab value to add.
-    const numberToSubtract = document.querySelector('#numberForMath').value;
+    let numberToSubtract = document.querySelector('').value;
     
     // Add value to everything on the list.
   
@@ -134,7 +140,7 @@ function multiplyByAll(event) {
     event.preventDefault();
     
     // Grab value to add.
-    const numberToMultiply = document.querySelector('#numberForMath').value;
+    let numberToMultiply = document.querySelector('').value;
     
     // Add value to everything on the list.
     
@@ -148,7 +154,7 @@ function divideFromAll(event) {
     event.preventDefault();
 
     // Grab value to add.
-    const numberToDivide = document.querySelector('#numberForMath').value;
+    let numberToDivide = document.querySelector('').value;
 
     // Divide value from everything on the list.
     
@@ -172,7 +178,7 @@ function updateUL() {
 }
 
 function clearUL() {
-    const ul = document.querySelector('#number-list');
+    const ul = document.querySelector('');
     while(ul.hasChildNodes()) {
         ul.removeChild(ul.firstChild);
     }
@@ -180,8 +186,8 @@ function clearUL() {
 
 // Append to the UL.
 function addToUL(numberToAppend) {
-    const UL = document.querySelector('#number-list');
-    const newLI = document.createElement('li');
+    const UL = document.querySelector('');
+    const newLI = document.createElement('');
     newLI.innerText = numberToAppend;
     UL.appendChild(newLI);
 }
