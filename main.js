@@ -54,16 +54,18 @@ function appendToList(event) {
     event.preventDefault();
 
     // Get the value we're going to append from the input field.
-    let number = document.querySelector('#listNumber').value;
+    let number = parseInt(document.querySelector('#listNumber').value);
 
     // Append the number to our array.
     // Hint: here (and elsewhere), watch the TYPE of the value above.
     // Research `typeof` operator if you're not sure.
     if(number != NaN){
-        numbers.push(parseInt(number));
+        numbers.push(number);
     }
     // Update our html.
     resetInput();
+    updateUL();
+
 
 
 }
@@ -73,10 +75,12 @@ function removeFromList(event) {
     event.preventDefault();
 
     // Get the index we'll remove from the input field.
-    let index = document.querySelector('#listNumber').value;
+    let index = parseInt(document.querySelector('#listNumber').value);
 
     // Remove the number at that index from the list.
-    numbers.splice(index, 1);
+    if(index != NaN){
+        numbers.splice(index, 1);
+    }
     /*
         ### Hints:
 
@@ -89,6 +93,7 @@ function removeFromList(event) {
 
     // Update our html.
     resetInput();
+    updateUL();
 
 
 }
@@ -101,6 +106,7 @@ function clearList(event) {
     numbers = [];
 
     // Update our html.
+    updateUL();
     
 }
 
@@ -116,41 +122,51 @@ function addToAll(event) {
     event.preventDefault();
 
     // Grab value to add.
-    let numberToAdd = document.querySelector('#numberForMath').value;
+    let numberToAdd = parseInt(document.querySelector('#numberForMath').value);
 
     // Add value to everything on the list.
+    for(let i = 0; i < numbers.length; i++){
+        numbers[i] = numberToAdd + numbers[i];
+    }
 
 
     // Update our html.
     resetInput()
+    updateUL();
 }
 
 function subtractFromAll(event) {
     // Make sure page doesn't reload on button press.
     event.preventDefault();
     
-    // Grab value to add.
+    // Grab value to subtract.
     let numberToSubtract = document.querySelector('#numberForMath').value;
     
-    // Add value to everything on the list.
-  
+    // Subtract value from everything on the list.
+    for(let i = 0; i < numbers.length; i++){
+        numbers[i] = numbers[i] - numberToSubtract;
+    }
 
     // Update our html.
     resetInput()
+    updateUL();
 }
 
 function multiplyByAll(event) {
     // Make sure page doesn't reload on button press.
     event.preventDefault();
     
-    // Grab value to add.
+    // Grab value to multiply.
     let numberToMultiply = document.querySelector('#numberForMath').value;
     
-    // Add value to everything on the list.
-    
+    // Multiply value of everything on the list.
+    for(let i = 0; i < numbers.length; i++){
+        numbers[i] = numberToMultiply * numbers[i];
+    }
     
     // Update our html.
-    resetInput()
+    resetInput();
+    updateUL();
 }
 
 function divideFromAll(event) {
@@ -161,10 +177,13 @@ function divideFromAll(event) {
     let numberToDivide = document.querySelector('#numberForMath').value;
 
     // Divide value from everything on the list.
-    
+    for(let i = 0; i < numbers.length; i++){
+        numbers[i] = numbers[i] / numberToDivide;
+    }
 
     // // Update our html.plo
-    resetInput()
+    resetInput();
+    updateUL();
 }
 
 
@@ -182,7 +201,7 @@ function updateUL() {
 }
 
 function clearUL() {
-    const ul = document.querySelector('');
+    const ul = document.querySelector('#numberList');
     while(ul.hasChildNodes()) {
         ul.removeChild(ul.firstChild);
     }
@@ -190,10 +209,10 @@ function clearUL() {
 
 // Append to the UL.
 function addToUL(numberToAppend) {
-    const ul = document.querySelector('');
-    const newLI = document.createElement('');
+    const ul = document.querySelector('#numberList');
+    const newLI = document.createElement('li');
     newLI.innerText = numberToAppend;
-    UL.appendChild(newLI);
+    ul.appendChild(newLI);
 }
 // =======================================
 // Miscellaneous quality of life functions
