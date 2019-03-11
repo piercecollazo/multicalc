@@ -186,7 +186,7 @@ function clearUL() {
 
 // Append to the UL.
 function addToUL(numberToAppend) {
-    const UL = document.querySelector('');
+    const ul = document.querySelector('');
     const newLI = document.createElement('');
     newLI.innerText = numberToAppend;
     UL.appendChild(newLI);
