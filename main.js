@@ -40,6 +40,10 @@ function init() {
     // When the user clicks the divide button, divide the value from each item.
     document.querySelector('#divide')
         .addEventListener('click', divideFromAll);
+
+    // When the user clicks the exponent button, multiple the items to themselves based off of the value input
+    document.querySelector('#exponent')
+    .addEventListener('click', exponentAll);
 }
 
 /*
@@ -186,6 +190,18 @@ function divideFromAll(event) {
     updateUL();
 }
 
+function exponentAll(event){
+    event.preventDefault();
+    
+    let numberToExponent = document.querySelector('#numberForMath').value;
+
+    for(let i = 0; i < numbers.length; i++){
+        numbers[i] = numbers[i] * (numbers[i] * numberToExponent);
+    }
+
+    resetInput();
+    updateUL();
+}
 
 /*
 # ========================================================
