@@ -59,8 +59,11 @@ function appendToList(event) {
     // Append the number to our array.
     // Hint: here (and elsewhere), watch the TYPE of the value above.
     // Research `typeof` operator if you're not sure.
-
+    if(number != NaN){
+        numbers.push(parseInt(number));
+    }
     // Update our html.
+    resetInput();
 
 
 }
@@ -73,7 +76,7 @@ function removeFromList(event) {
     let index = document.querySelector('#listNumber').value;
 
     // Remove the number at that index from the list.
-
+    numbers.splice(index, 1);
     /*
         ### Hints:
 
@@ -85,6 +88,7 @@ function removeFromList(event) {
     */
 
     // Update our html.
+    resetInput();
 
 
 }
@@ -118,7 +122,7 @@ function addToAll(event) {
 
 
     // Update our html.
-
+    resetInput()
 }
 
 function subtractFromAll(event) {
@@ -132,7 +136,7 @@ function subtractFromAll(event) {
   
 
     // Update our html.
-
+    resetInput()
 }
 
 function multiplyByAll(event) {
@@ -146,7 +150,7 @@ function multiplyByAll(event) {
     
     
     // Update our html.
-    
+    resetInput()
 }
 
 function divideFromAll(event) {
@@ -160,7 +164,7 @@ function divideFromAll(event) {
     
 
     // // Update our html.plo
-    
+    resetInput()
 }
 
 
@@ -190,4 +194,13 @@ function addToUL(numberToAppend) {
     const newLI = document.createElement('');
     newLI.innerText = numberToAppend;
     UL.appendChild(newLI);
+}
+// =======================================
+// Miscellaneous quality of life functions
+// =======================================
+
+// Clearing the input field upon button use.
+function resetInput() {
+    document.querySelector('#listNumber').value = '';
+    document.querySelector('#numberForMath').value = '';
 }
