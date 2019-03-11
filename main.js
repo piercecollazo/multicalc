@@ -54,7 +54,7 @@ function appendToList(event) {
     event.preventDefault();
 
     // Get the value we're going to append from the input field.
-    let number = document.querySelector('#list-number').value;
+    let number = document.querySelector('').value;
 
     // Append the number to our array.
     // Hint: here (and elsewhere), watch the TYPE of the value above.
@@ -159,7 +159,7 @@ function divideFromAll(event) {
     // Divide value from everything on the list.
     
 
-    // Update our html.
+    // // Update our html.plo
     
 }
 
