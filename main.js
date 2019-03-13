@@ -7,6 +7,12 @@
 // global array
 let numbers = [];
 
+// Switch (appLever) for all the math functions(and others dependent on loops)
+// Each function will modify the value and run another function (doItAll) that holds a single loop.
+// doItAll will run a loop containing a series of conditionals, and the switch will determine which condition runs.
+
+let appLever = '';
+
 // When the window loads, set up event listeners
 window.onload = init;
 
@@ -42,9 +48,44 @@ function init() {
         .addEventListener('click', divideFromAll);
 
     // When the user clicks the exponent button, multiple the items to themselves based off of the value input
-    document.querySelector('#exponent')
-    .addEventListener('click', exponentAll);
+    document.querySelector('#triangulate')
+    .addEventListener('click', triangulateAll);
+
+    // When the user clicks the remove value button, remove the value from the list without having to enter index.
+    document.querySelector('#removeVal')
+    .addEventListener('click', removeValue);
 }
+
+// ===================================
+// App loop for all functions
+// ===================================
+
+function doItAll(myNum){
+    for(let i = 0; i < numbers.length; i++){
+        // Add to all
+        if(appLever === 'Add'){
+          numbers[i] = numbers[i] + myNum;
+        // Subtract all
+        }else if(appLever === 'Subtract'){
+
+        // Multiply all
+        }else if(appLever === 'Multiply'){
+          numbers[i] = numbers[i] * myNum;
+
+        // Divide all
+        }else if(appLever === 'Divide'){
+          numbers[i] = numbers[i] / myNum;
+
+        // Remove value
+        }else if(appLever === 'Remove value' && myNum === numbers[i]){
+          numbers.splice(i, 1);
+        //  Apply all to Celsius
+        }else if(appLever === 'Triangulate'){
+            numbers[i] = (numbers[i] * myNum) / 2;
+        }
+      }
+}
+
 
 /*
 # ========================================================
@@ -114,6 +155,24 @@ function clearList(event) {
     
 }
 
+function removeValue(){
+    event.preventDefault();
+
+    let userListNum = parseInt(document.querySelector('#listNumber').value);
+
+    // for(let i = 0; i < numbers.length; i++){
+    //     if(value === numbers[i]){
+    //         numbers.splice(i, 1);
+    //     }
+    // }
+
+    appLever = 'Remove value';
+    doItAll(userListNum);
+
+    resetInput();
+    updateUL();
+}
+
 /*
 # ========================================================
 # = Math Section
@@ -126,12 +185,14 @@ function addToAll(event) {
     event.preventDefault();
 
     // Grab value to add.
-    let numberToAdd = parseInt(document.querySelector('#numberForMath').value);
+    let userMathNum = parseInt(document.querySelector('#numberForMath').value);
 
     // Add value to everything on the list.
-    for(let i = 0; i < numbers.length; i++){
-        numbers[i] = numberToAdd + numbers[i];
-    }
+    // for(let i = 0; i < numbers.length; i++){
+    //     numbers[i] = numberToAdd + numbers[i];
+    // }
+    appLever = 'Add'
+    doItAll(userMathNum);
 
 
     // Update our html.
@@ -144,12 +205,14 @@ function subtractFromAll(event) {
     event.preventDefault();
     
     // Grab value to subtract.
-    let numberToSubtract = document.querySelector('#numberForMath').value;
+    let userMathNum = parseInt(document.querySelector('#numberForMath').value);
     
     // Subtract value from everything on the list.
-    for(let i = 0; i < numbers.length; i++){
-        numbers[i] = numbers[i] - numberToSubtract;
-    }
+    // for(let i = 0; i < numbers.length; i++){
+    //     numbers[i] = numbers[i] - numberToSubtract;
+    // }
+    appLever = 'Subtract';
+    doItAll(userMathNum);
 
     // Update our html.
     resetInput()
@@ -161,13 +224,15 @@ function multiplyByAll(event) {
     event.preventDefault();
     
     // Grab value to multiply.
-    let numberToMultiply = document.querySelector('#numberForMath').value;
+    let userMathNum = parseInt(document.querySelector('#numberForMath').value);
     
     // Multiply value of everything on the list.
-    for(let i = 0; i < numbers.length; i++){
-        numbers[i] = numberToMultiply * numbers[i];
-    }
-    
+    // for(let i = 0; i < numbers.length; i++){
+    //     numbers[i] = numberToMultiply * numbers[i];
+    // }
+    appLever = 'Multiply'
+    doItAll(userMathNum);
+
     // Update our html.
     resetInput();
     updateUL();
@@ -178,27 +243,30 @@ function divideFromAll(event) {
     event.preventDefault();
 
     // Grab value to add.
-    let numberToDivide = document.querySelector('#numberForMath').value;
+    let userMathNum = parseInt(document.querySelector('#numberForMath').value);
 
     // Divide value from everything on the list.
-    for(let i = 0; i < numbers.length; i++){
-        numbers[i] = numbers[i] / numberToDivide;
-    }
+    // for(let i = 0; i < numbers.length; i++){
+    //     numbers[i] = numbers[i] / numberToDivide;
+    // }
+    appLever = 'Divide';
+    doItAll(userMathNum);
 
     // // Update our html.plo
     resetInput();
     updateUL();
 }
 
-function exponentAll(event){
+function triangulateAll(event){
     event.preventDefault();
     
-    let numberToExponent = document.querySelector('#numberForMath').value;
+    let userMathNum = parseInt(document.querySelector('#numberForMath').value);
 
-    for(let i = 0; i < numbers.length; i++){
-        numbers[i] = numbers[i] * (numbers[i] * numberToExponent);
-    }
-
+    // for(let i = 0; i < numbers.length; i++){
+    //     numbers[i] = numbers[i] * (numbers[i] * numberToExponent);
+    // }
+    appLever = 'Triangulate'
+    doItAll(userMathNum);
     resetInput();
     updateUL();
 }
